@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://85vov8qn1qw5"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.439216)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+offset_right = 272.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -116.0
+offset_right = 273.0
+grow_vertical = 0
+
+[node name="CharacteristicNames" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PulseWidthLabel" type="Label" parent="HBoxContainer/CharacteristicNames"]
+layout_mode = 2
+text = " Pulse Width (nanoseconds) "
+
+[node name="PRILabel" type="Label" parent="HBoxContainer/CharacteristicNames"]
+layout_mode = 2
+text = " PRI (microseconds)"
+
+[node name="EffectivePowerLabel" type="Label" parent="HBoxContainer/CharacteristicNames"]
+layout_mode = 2
+text = " Power (kilowatts)"
+
+[node name="FrequencyLabel" type="Label" parent="HBoxContainer/CharacteristicNames"]
+layout_mode = 2
+text = " Frequency (megahertz)"
+
+[node name="CharacteristicValues" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PulseWidthValue" type="Label" parent="HBoxContainer/CharacteristicValues"]
+layout_mode = 2
+text = "0"
+
+[node name="PRIValue" type="Label" parent="HBoxContainer/CharacteristicValues"]
+layout_mode = 2
+text = "0"
+
+[node name="EffectivePowerValue" type="Label" parent="HBoxContainer/CharacteristicValues"]
+layout_mode = 2
+text = "0"
+
+[node name="FrequencyValue" type="Label" parent="HBoxContainer/CharacteristicValues"]
+layout_mode = 2
+text = "0"
+
+[node name="RadarVisibility" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -173.0
+offset_right = 273.0
+grow_vertical = 0
+
+[node name="Indicator" type="Label" parent="RadarVisibility"]
+layout_mode = 2

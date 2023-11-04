@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://r0cgynxn75ay"]
+
+[ext_resource type="Script" path="res://Scenes/entity_1.gd" id="1_2tdsm"]
+[ext_resource type="Texture2D" uid="uid://cwy1jaya1rvli" path="res://player.png" id="1_j3sll"]
+[ext_resource type="Script" path="res://Scenes/Receiver.gd" id="3_wdos7"]
+
+[node name="Entity1" type="CharacterBody2D" groups=["Receivers"]]
+scale = Vector2(0.25, 0.25)
+collision_mask = 2
+script = ExtResource("1_2tdsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_j3sll")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+polygon = PackedVector2Array(-9, -38, -12, -12, -36, 2, -41, -1, -44, -7, -50, -6, -47, 25, -42, 25, -41, 22, -13, 29, -8, 38, 8, 38, 14, 28, 41, 22, 43, 25, 47, 24, 50, -6, 45, -7, 41, -1, 35, 2, 13, -12, 9, -38)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.8, 1.8)
+
+[node name="Receiver" type="Node" parent="."]
+script = ExtResource("3_wdos7")

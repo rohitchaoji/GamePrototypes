@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn1uchwduqxnd"]
+
+[ext_resource type="Script" path="res://Scenes/first.gd" id="1_wxl6m"]
+[ext_resource type="PackedScene" uid="uid://r0cgynxn75ay" path="res://Scenes/entity_1.tscn" id="1_yk13s"]
+[ext_resource type="PackedScene" uid="uid://khw8t0vjpyy1" path="res://Scenes/emitter.tscn" id="2_x5pgs"]
+[ext_resource type="Texture2D" uid="uid://cdn2unj8a50hg" path="res://stones.png" id="3_53v7t"]
+[ext_resource type="PackedScene" uid="uid://85vov8qn1qw5" path="res://Scenes/ui.tscn" id="5_xk7au"]
+
+[node name="First" type="Node2D"]
+script = ExtResource("1_wxl6m")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_53v7t")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 20000)
+
+[node name="Entity1" parent="." instance=ExtResource("1_yk13s")]
+position = Vector2(190, 209)
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="Emitter" parent="Emitters" instance=ExtResource("2_x5pgs")]
+position = Vector2(23, 174)
+pulse_width = 10.0
+PRI = 20.0
+effective_power = 300.0
+frequency = 2000.0
+scan_range = 50.0
+
+[node name="Emitter2" parent="Emitters" instance=ExtResource("2_x5pgs")]
+position = Vector2(454, 377)
+pulse_width = 10.0
+PRI = 30.0
+effective_power = 600.0
+frequency = 1500.0
+scan_range = 75.0
+
+[node name="UI" parent="." instance=ExtResource("5_xk7au")]
+
+[connection signal="entity_exited_scan_range" from="Emitters/Emitter" to="." method="_on_emitter_entity_exited_scan_range"]
+[connection signal="entity_in_scan_range" from="Emitters/Emitter" to="." method="_on_emitter_entity_in_scan_range"]
+[connection signal="entity_exited_scan_range" from="Emitters/Emitter2" to="." method="_on_emitter_entity_exited_scan_range"]
+[connection signal="entity_in_scan_range" from="Emitters/Emitter2" to="." method="_on_emitter_entity_in_scan_range"]
