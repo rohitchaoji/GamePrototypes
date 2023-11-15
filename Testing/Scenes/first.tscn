@@ -1,47 +1,121 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn1uchwduqxnd"]
+[gd_scene load_steps=8 format=3 uid="uid://bn1uchwduqxnd"]
 
 [ext_resource type="Script" path="res://Scenes/first.gd" id="1_wxl6m"]
 [ext_resource type="PackedScene" uid="uid://r0cgynxn75ay" path="res://Scenes/entity_1.tscn" id="1_yk13s"]
-[ext_resource type="PackedScene" uid="uid://khw8t0vjpyy1" path="res://Scenes/emitter.tscn" id="2_x5pgs"]
 [ext_resource type="Texture2D" uid="uid://cdn2unj8a50hg" path="res://stones.png" id="3_53v7t"]
-[ext_resource type="PackedScene" uid="uid://85vov8qn1qw5" path="res://Scenes/ui.tscn" id="5_xk7au"]
+[ext_resource type="PackedScene" uid="uid://dq601hianigsc" path="res://Scenes/fuel_can.tscn" id="3_o5q07"]
+[ext_resource type="PackedScene" uid="uid://d4lwev4n15hrf" path="res://Scenes/light_source.tscn" id="5_x6525"]
+[ext_resource type="PackedScene" uid="uid://bw3dkjrxdon8a" path="res://Scenes/speed_boost.tscn" id="6_id30d"]
+[ext_resource type="PackedScene" uid="uid://cqcsk1warcgbx" path="res://Scenes/goal.tscn" id="6_nxjnx"]
 
 [node name="First" type="Node2D"]
 script = ExtResource("1_wxl6m")
 
+[node name="Entity1" parent="." instance=ExtResource("1_yk13s")]
+modulate = Color(0.47451, 0.47451, 0.47451, 1)
+position = Vector2(-1135, 0)
+
 [node name="Ground" type="Node2D" parent="."]
+z_index = -1
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
 texture_repeat = 2
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_53v7t")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 20000)
+metadata/_edit_lock_ = true
 
-[node name="Entity1" parent="." instance=ExtResource("1_yk13s")]
-position = Vector2(190, 209)
+[node name="Lights" type="Node" parent="Ground"]
 
-[node name="Emitters" type="Node" parent="."]
+[node name="LightSource" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(-629, -237)
+metadata/_edit_lock_ = true
 
-[node name="Emitter" parent="Emitters" instance=ExtResource("2_x5pgs")]
-position = Vector2(23, 174)
-pulse_width = 10.0
-PRI = 20.0
-effective_power = 300.0
-frequency = 2000.0
-scan_range = 50.0
+[node name="LightSource2" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(2074, -643)
+metadata/_edit_lock_ = true
 
-[node name="Emitter2" parent="Emitters" instance=ExtResource("2_x5pgs")]
-position = Vector2(454, 377)
-pulse_width = 10.0
-PRI = 30.0
-effective_power = 600.0
-frequency = 1500.0
-scan_range = 75.0
+[node name="LightSource3" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(5051, 331)
+metadata/_edit_lock_ = true
 
-[node name="UI" parent="." instance=ExtResource("5_xk7au")]
+[node name="LightSource4" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(4211, 3197)
+metadata/_edit_lock_ = true
 
-[connection signal="entity_exited_scan_range" from="Emitters/Emitter" to="." method="_on_emitter_entity_exited_scan_range"]
-[connection signal="entity_in_scan_range" from="Emitters/Emitter" to="." method="_on_emitter_entity_in_scan_range"]
-[connection signal="entity_exited_scan_range" from="Emitters/Emitter2" to="." method="_on_emitter_entity_exited_scan_range"]
-[connection signal="entity_in_scan_range" from="Emitters/Emitter2" to="." method="_on_emitter_entity_in_scan_range"]
+[node name="LightSource5" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(1717, 5197)
+metadata/_edit_lock_ = true
+
+[node name="LightSource6" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(-1335, 6098)
+metadata/_edit_lock_ = true
+
+[node name="FuelCans" type="Node" parent="Ground"]
+
+[node name="FuelCan" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(665, -437)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan2" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-674, -468)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan3" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(106, -315)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan4" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(1717, -843)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan5" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(2783, -315)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan6" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(4517, 209)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan7" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(5251, 1018)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan8" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(3717, 3152)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan9" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-745, 5828)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan10" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-1965, 6298)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan11" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(1330, 5272)
+metadata/_edit_lock_ = true
+
+[node name="Boosters" type="Node" parent="Ground"]
+
+[node name="SpeedBoost" parent="Ground/Boosters" instance=ExtResource("6_id30d")]
+position = Vector2(106, -643)
+
+[node name="SpeedBoost2" parent="Ground/Boosters" instance=ExtResource("6_id30d")]
+position = Vector2(2178, -191)
+
+[node name="Goals" type="Node" parent="Ground"]
+
+[node name="Goal" parent="Ground/Goals" instance=ExtResource("6_nxjnx")]
+z_index = -1
+position = Vector2(-5683, 6552)
+metadata/_edit_lock_ = true
+
+[node name="Effects" type="Node" parent="Ground"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Ground/Effects"]
+color = Color(1, 0.862745, 0.67451, 1)
+energy = 1.49
+blend_mode = 1
