@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r0cgynxn75ay"]
+[gd_scene load_steps=15 format=3 uid="uid://r0cgynxn75ay"]
 
 [ext_resource type="Script" path="res://Scenes/entity_1.gd" id="1_2tdsm"]
 [ext_resource type="Texture2D" uid="uid://cwy1jaya1rvli" path="res://player.png" id="1_j3sll"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://85vov8qn1qw5" path="res://Scenes/ui.tscn" id="4_5ht2a"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="5_p64pi"]
 [ext_resource type="Texture2D" uid="uid://04tobtbyme63" path="res://circle.png" id="6_tsoni"]
+[ext_resource type="Texture2D" uid="uid://bxl88qlf7tu3y" path="res://white.png" id="7_ptm7p"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ld6xt"]
 polygon = PackedVector2Array(-35, 4, -27, 9, -20, 40, -3, 35, 12, 7, 31, 5, 31, -5, 12, -7, -3, -36, -20, -40, -28, -9, -35, -4)
@@ -49,6 +50,7 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_lk3mk"]
+offsets = PackedFloat32Array(0, 0.62963)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0myti"]
@@ -63,8 +65,7 @@ spread = 20.0
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 25.0
-scale_max = 25.0
+scale_max = 2.5
 color = Color(1, 0.85098, 0.372549, 1)
 color_ramp = SubResource("GradientTexture1D_0myti")
 
@@ -110,5 +111,6 @@ scale = Vector2(0.75, 0.75)
 emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_a54wv")
+texture = ExtResource("7_ptm7p")
 
 [connection signal="timeout" from="SpeedBoostTimer" to="." method="_on_speed_boost_timer_timeout"]
