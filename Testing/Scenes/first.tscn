@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn1uchwduqxnd"]
+[gd_scene load_steps=9 format=3 uid="uid://bn1uchwduqxnd"]
 
 [ext_resource type="Script" path="res://Scenes/first.gd" id="1_wxl6m"]
 [ext_resource type="PackedScene" uid="uid://r0cgynxn75ay" path="res://Scenes/entity_1.tscn" id="1_yk13s"]
@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bw3dkjrxdon8a" path="res://Scenes/speed_boost.tscn" id="6_id30d"]
 [ext_resource type="PackedScene" uid="uid://cqcsk1warcgbx" path="res://Scenes/goal.tscn" id="6_nxjnx"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev6gr"]
+
 [node name="First" type="Node2D"]
 script = ExtResource("1_wxl6m")
 
 [node name="Entity1" parent="." instance=ExtResource("1_yk13s")]
 modulate = Color(0.47451, 0.47451, 0.47451, 1)
+z_index = 1
 position = Vector2(-1135, 0)
 
 [node name="Ground" type="Node2D" parent="."]
@@ -104,7 +107,7 @@ metadata/_edit_lock_ = true
 position = Vector2(106, -643)
 
 [node name="SpeedBoost2" parent="Ground/Boosters" instance=ExtResource("6_id30d")]
-position = Vector2(2178, -191)
+position = Vector2(4851, 860)
 
 [node name="Goals" type="Node" parent="Ground"]
 
@@ -119,3 +122,14 @@ metadata/_edit_lock_ = true
 color = Color(1, 0.862745, 0.67451, 1)
 energy = 1.49
 blend_mode = 1
+
+[node name="Area2D" type="Area2D" parent="Ground"]
+collision_layer = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
+scale = Vector2(1000, 1000)
+shape = SubResource("RectangleShape2D_ev6gr")
+metadata/_edit_lock_ = true
+
+[connection signal="body_exited" from="Ground/Area2D" to="." method="_on_area_2d_body_exited"]

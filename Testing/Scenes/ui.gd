@@ -1,4 +1,5 @@
 extends CanvasLayer
 
 func _process(_delta):	
-	$FuelIndicator/Fuel.text = " Fuel: " + str($"..".fuel)
+	$Indicator/Fuel.text = " Fuel: " + str($"..".fuel)
+	$Indicator/Boosters.text = " Boosters: " + str($"..".speed_boosters)
