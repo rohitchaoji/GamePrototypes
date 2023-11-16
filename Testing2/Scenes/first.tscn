@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn1uchwduqxnd"]
+
+[ext_resource type="Script" path="res://Scenes/first.gd" id="1_wxl6m"]
+[ext_resource type="PackedScene" uid="uid://r0cgynxn75ay" path="res://Scenes/entity_1.tscn" id="1_yk13s"]
+[ext_resource type="Texture2D" uid="uid://cdn2unj8a50hg" path="res://stones.png" id="3_53v7t"]
+[ext_resource type="PackedScene" uid="uid://dq601hianigsc" path="res://Scenes/fuel_can.tscn" id="3_o5q07"]
+[ext_resource type="PackedScene" uid="uid://d4lwev4n15hrf" path="res://Scenes/light_source.tscn" id="5_x6525"]
+[ext_resource type="PackedScene" uid="uid://bw3dkjrxdon8a" path="res://Scenes/speed_boost.tscn" id="6_id30d"]
+[ext_resource type="PackedScene" uid="uid://cqcsk1warcgbx" path="res://Scenes/goal.tscn" id="6_nxjnx"]
+[ext_resource type="PackedScene" uid="uid://b4j2k1paq8gxp" path="res://Scenes/check_point.tscn" id="8_17vmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev6gr"]
+
+[node name="First" type="Node2D"]
+script = ExtResource("1_wxl6m")
+
+[node name="Entity1" parent="." instance=ExtResource("1_yk13s")]
+modulate = Color(0.47451, 0.47451, 0.47451, 1)
+z_index = 1
+position = Vector2(-1135, 0)
+
+[node name="Ground" type="Node2D" parent="."]
+z_index = -1
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+texture = ExtResource("3_53v7t")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 20000)
+metadata/_edit_lock_ = true
+
+[node name="Lights" type="Node" parent="Ground"]
+
+[node name="LightSource" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(-629, -237)
+metadata/_edit_lock_ = true
+
+[node name="LightSource2" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(2074, -643)
+metadata/_edit_lock_ = true
+
+[node name="LightSource3" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(5051, 331)
+metadata/_edit_lock_ = true
+
+[node name="LightSource4" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(4211, 3197)
+metadata/_edit_lock_ = true
+
+[node name="LightSource5" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(1717, 5197)
+metadata/_edit_lock_ = true
+
+[node name="LightSource6" parent="Ground/Lights" instance=ExtResource("5_x6525")]
+position = Vector2(-1335, 6098)
+metadata/_edit_lock_ = true
+
+[node name="FuelCans" type="Node" parent="Ground"]
+
+[node name="FuelCan" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(665, -437)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan2" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-674, -468)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan3" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(106, -315)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan4" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(1717, -843)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan5" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(2783, -315)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan6" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(4517, 209)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan7" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(5251, 1018)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan8" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(3717, 3152)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan9" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-745, 5828)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan10" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(-1965, 6298)
+metadata/_edit_lock_ = true
+
+[node name="FuelCan11" parent="Ground/FuelCans" instance=ExtResource("3_o5q07")]
+position = Vector2(1330, 5272)
+metadata/_edit_lock_ = true
+
+[node name="Boosters" type="Node" parent="Ground"]
+
+[node name="SpeedBoost" parent="Ground/Boosters" instance=ExtResource("6_id30d")]
+position = Vector2(106, -643)
+metadata/_edit_lock_ = true
+
+[node name="SpeedBoost2" parent="Ground/Boosters" instance=ExtResource("6_id30d")]
+position = Vector2(4851, 860)
+metadata/_edit_lock_ = true
+
+[node name="Goals" type="Node" parent="Ground"]
+
+[node name="Goal" parent="Ground/Goals" instance=ExtResource("6_nxjnx")]
+z_index = -1
+position = Vector2(-5683, 6552)
+metadata/_edit_lock_ = true
+
+[node name="Effects" type="Node" parent="Ground"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Ground/Effects"]
+color = Color(1, 0.862745, 0.67451, 1)
+energy = 1.49
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Checkpoints" type="Node" parent="Ground"]
+
+[node name="CheckPoint" parent="Ground/Checkpoints" instance=ExtResource("8_17vmj")]
+position = Vector2(-465, 377)
+
+[node name="GameArea" type="Area2D" parent="Ground"]
+collision_layer = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/GameArea"]
+scale = Vector2(1000, 1000)
+shape = SubResource("RectangleShape2D_ev6gr")
+metadata/_edit_lock_ = true
+
+[connection signal="body_exited" from="Ground/GameArea" to="." method="_on_game_area_body_exited"]

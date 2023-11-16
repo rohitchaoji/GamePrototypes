@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpxefs0q5378r"]
+
+[ext_resource type="Texture2D" uid="uid://bbmqivx0w0dw8" path="res://enemyUFO.png" id="1_3ucbt"]
+[ext_resource type="Script" path="res://Scenes/entity_2.gd" id="1_xd5p5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t3f7"]
+
+[node name="entity_2" type="CharacterBody2D"]
+script = ExtResource("1_xd5p5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3ucbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.75, 4.75)
+shape = SubResource("CircleShape2D_4t3f7")

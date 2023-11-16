@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://jiy2jioxq5eu"]
+
+[ext_resource type="PackedScene" uid="uid://dpxefs0q5378r" path="res://Scenes/entity_2.tscn" id="1_6504r"]
+
+[sub_resource type="Curve2D" id="Curve2D_stbxc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 262, 291, 0, 0, 0, 0, 822, 320, 0, 0, 0, 0, 1004, -76, 0, 0, 0, 0, 566, -320, 0, 0, 0, 0, 145, -251, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[node name="Waypoints" type="Path2D"]
+curve = SubResource("Curve2D_stbxc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 0.837791
+
+[node name="entity_2" parent="PathFollow2D" instance=ExtResource("1_6504r")]
+rotation = -0.837791
