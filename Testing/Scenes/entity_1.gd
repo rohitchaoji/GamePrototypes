@@ -9,7 +9,10 @@ var fuel_anim: bool = false
 var victory: bool = false
 var speed_boosters: int = 0
 var can_boost: bool = true
+var can_win: bool = false
 var direction
+var checkpoints_reached: int = 0
+
 
 func _process(_delta):
 	direction = (get_global_mouse_position() - position).normalized()
@@ -18,8 +21,7 @@ func _process(_delta):
 		"move_forward": direction,
 		"move_backward": -direction,
 	}
-	
-	print(speed)
+
 
 	for action in ["move_forward", "move_backward"]:
 		if Input.is_action_pressed(action) and fuel > 0:
@@ -42,15 +44,15 @@ func _process(_delta):
 		$FuelIndicatorBlink.stop()
 		fuel_anim = false
 	
-	if (fuel <= 0):
-		$UI/GameStatus/Status.text = "Game Over"
-	
 	if (speed > max_speed):
 		await get_tree().create_timer(1.5).timeout
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "speed", max_speed, 0.05)
 		$BoostExhaust.emitting = false
 		$SpeedBoostTimer.start()
+	
+	if (fuel <= 0):
+		$UI/GameStatus/Status.text = "Game Over"
 	
 	if (victory):
 		$UI/GameStatus/Status.text = "Victory!"
@@ -61,5 +63,3 @@ func _process(_delta):
 
 func _on_speed_boost_timer_timeout():
 	can_boost = true
-
-

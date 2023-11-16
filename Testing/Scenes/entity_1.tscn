@@ -105,6 +105,7 @@ libraries = {
 process_callback = 0
 
 [node name="BoostExhaust" type="GPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 texture_filter = 2
 position = Vector2(-50, 0)
 scale = Vector2(0.75, 0.75)

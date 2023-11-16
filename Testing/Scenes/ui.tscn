@@ -60,3 +60,34 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "In Flight"
 horizontal_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color(0.635294, 0.635294, 0.635294, 0.898039)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -100.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[node name="CheckpointCounter" type="VBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -100.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Checkpoints" type="Label" parent="CheckpointCounter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = " Checkpoints: 0 / x"
