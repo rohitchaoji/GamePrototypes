@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4j2k1paq8gxp"]
+[gd_scene load_steps=8 format=3 uid="uid://b4j2k1paq8gxp"]
 
 [ext_resource type="Texture2D" uid="uid://bmuqcjcihskfc" path="res://BlueCircleTransparent.png" id="1_4uitf"]
 [ext_resource type="Script" path="res://Scenes/check_point.gd" id="1_o2x84"]
+[ext_resource type="Texture2D" uid="uid://bxl88qlf7tu3y" path="res://white.png" id="3_frvyt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ns1sg"]
 
@@ -46,12 +47,22 @@ _data = {
 collision_layer = 2
 script = ExtResource("1_o2x84")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(25.5, 25.5)
+shape = SubResource("CircleShape2D_ns1sg")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4uitf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(25.5, 25.5)
-shape = SubResource("CircleShape2D_ns1sg")
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_4uitf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0.619608)
+scale = Vector2(8, 8)
+texture = ExtResource("3_frvyt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

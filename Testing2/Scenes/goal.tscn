@@ -70,6 +70,7 @@ texture = ExtResource("1_erfa5")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 5.0
 shadow_enabled = true
+shadow_color = Color(0.176471, 0.176471, 0.176471, 0.176471)
 texture = SubResource("GradientTexture2D_446gl")
 texture_scale = 20.0
 

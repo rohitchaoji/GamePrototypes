@@ -132,6 +132,12 @@ metadata/_edit_lock_ = true
 [node name="CheckPoint" parent="Ground/Checkpoints" instance=ExtResource("8_17vmj")]
 position = Vector2(-465, 377)
 
+[node name="CheckPoint2" parent="Ground/Checkpoints" instance=ExtResource("8_17vmj")]
+position = Vector2(2074, 0)
+
+[node name="CheckPoint3" parent="Ground/Checkpoints" instance=ExtResource("8_17vmj")]
+position = Vector2(5695, 279)
+
 [node name="GameArea" type="Area2D" parent="Ground"]
 collision_layer = 8
 metadata/_edit_lock_ = true

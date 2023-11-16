@@ -3,15 +3,15 @@ extends CharacterBody2D
 
 @export var max_speed: int = 1000
 var speed: int = max_speed
+var speed_boosters: int = 0
+var checkpoints_reached: int = 0
 var max_fuel: float = 1000
 var fuel: float = max_fuel
 var fuel_anim: bool = false
 var victory: bool = false
-var speed_boosters: int = 0
 var can_boost: bool = true
 var can_win: bool = false
 var direction
-var checkpoints_reached: int = 0
 
 
 func _process(_delta):
