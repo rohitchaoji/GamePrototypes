@@ -17,13 +17,13 @@ scale = Vector2(4.8, 4.8)
 shape = SubResource("CircleShape2D_88y7b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 3.5
-shadow_enabled = true
+color = Color(1, 0.203922, 0.235294, 1)
+energy = 1.5
 shadow_color = Color(0.176471, 0.176471, 0.176471, 0.176471)
 texture = ExtResource("2_1xawe")
-texture_scale = 5.0
+texture_scale = 4.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-energy = 2.5
+energy = 0.5
 texture = ExtResource("2_1xawe")
 texture_scale = 0.5

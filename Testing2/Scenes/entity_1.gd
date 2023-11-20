@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-@export var max_speed: int = 1000
+@export var max_speed: int = 1500
 var speed: int = max_speed
 var speed_boosters: int = 0
 var checkpoints_reached: int = 0
-var max_fuel: float = 1000
+var max_fuel: float = 5000
 var fuel: float = max_fuel
 var fuel_anim: bool = false
 var victory: bool = false
