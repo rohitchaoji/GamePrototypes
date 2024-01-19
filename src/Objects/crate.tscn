@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://di7inf4j86vqj"]
+
+[ext_resource type="Script" path="res://src/Objects/crate.gd" id="1_dnb4r"]
+[ext_resource type="Texture2D" uid="uid://c3rf6t6mloo0v" path="res://src/crate.png" id="1_udqgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0erbu"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpfdj"]
+size = Vector2(38, 32)
+
+[node name="Crate" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 27
+script = ExtResource("1_dnb4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_udqgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0erbu")
+
+[node name="PushArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea"]
+shape = SubResource("RectangleShape2D_vpfdj")
+
+[connection signal="body_entered" from="PushArea" to="." method="_on_push_area_body_entered"]
+[connection signal="body_exited" from="PushArea" to="." method="_on_push_area_body_exited"]
