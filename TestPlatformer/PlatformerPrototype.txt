@@ -1,0 +1,80 @@
+Godot TestPlatformer project:
+
+Assets used:
+- Oak Woods v1.0
+- Legacy Fantasy: High Forest 2.3
+
+Scenes (classes) and their implemented mechanics:
+
+--------------------
+1. Level.tscn
+
+Scripts:
+level.gd
+Instance scripts (player.gd, boar.gd)
+
+Children:
+
+* Tilemap - Contains the level geometry with collision detection with Player and other entities. Also contains a Lamp for some reason. Contains Oak Woods tileset. Also contains background images, but they are not used in the tilemap.
+
+* ParallaxBackground - Contains 3 "ParallaxLayer"s, each containing images for different layers of the background, each with different scroll speeds and mirrored along the x-axis.
+
+* Instances of Player and Boar - Player has a signal connecting to the Level which causes the scene to reload on pressing "R" when a boolean flag "can_restart" in the player.gd script is set to true (currently only happens when player is dead and "Game Over" is displayed on screen).
+
+--------------------
+
+
+--------------------
+2. Player.tscn
+
+Scripts:
+player.gd
+playerUI.gd
+
+Children:
+
+* AnimatedSprite2D - Uses the character spritesheet from Oak Woods v1.0. Contains "Attack", "Dead", "Death", "Idle", "Jump", "JumpAscend", "JumpDescend" and "Move", of which all but "Jump" are used.
+
+* CollisionShape2D - CapsuleShape2D roughly covering the player sprite.
+
+* Camera2D - Camera that tracks the player.
+
+* WeaponHitbox - Area2D with CollisionShape2D child that activates when the "Attack" animation is playing. Area2D has a signal connected to player.gd
+
+* PlayerUI - CanvasLayer with a health indicator (ProgressBar) anchored to the lower left corner of the screen, and a GameOver indicator that activates when certain conditions are met.
+
+
+Mechanics implemented:
+
+* Movement - left and right movement, jumping, falling, including animations.
+
+* Attack - basic sword attack that activates a hitbox that calls a specific named function "hit()" (if exists) in any body that comes in contact.
+
+* Health and death - Player has a specific amount of health, which is reduced by Boar attacks (health = 10, damage by boar = 1). On health reaching 0, player's death state is triggered, which locks all movement, and allows for restarting the level by pressing "R" by setting a can_restart flag to true.
+
+--------------------
+
+--------------------
+3. Boar.tscn
+
+Scripts:
+boar.gd
+
+Children:
+
+* CollisionShape2D - Capsule shape covering the boar sprite. Adjusted according to preliminary test runs.
+
+* AnimatedSprite2D - Spritesheet of boar animations from Legacy Fantasy: High Forest 2.3. Animations include "Hit", "Idle", "Run" and "Walk".
+
+* DetectionArea (Area2D) - Signals to corresponding function in boar.gd. Causes boar to move to player.
+
+* AttackArea (Area2D) - Signals to corresponding function in boar.gd. Causes boar to charge at player.
+
+* DamageArea (Area2D) - Signals to corresponding function in boar.gd. Calls a "damage_from_boar" function on the body in area (player).
+
+--------------------
+
+--------------------
+4. Lamp.tscn
+
+StaticBody2D with a sprite and collision shape.
