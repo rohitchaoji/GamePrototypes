@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://r0cgynxn75ay"]
+
+[ext_resource type="Script" path="res://Scenes/entity_1.gd" id="1_2tdsm"]
+[ext_resource type="Texture2D" uid="uid://c7oago02lkkfd" path="res://Car.png" id="2_une5d"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="3_5jyk3"]
+[ext_resource type="PackedScene" uid="uid://85vov8qn1qw5" path="res://Scenes/ui.tscn" id="4_5ht2a"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="5_p64pi"]
+[ext_resource type="Texture2D" uid="uid://bxl88qlf7tu3y" path="res://white.png" id="7_ptm7p"]
+
+[sub_resource type="Animation" id="Animation_mjutw"]
+resource_name = "LowFuel"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(1, 0.301961, 0.235294, 1), Color(2, 2, 2, 1), Color(1, 0.301961, 0.235294, 1), Color(2, 2, 2, 1), Color(1, 0.301961, 0.235294, 1), Color(2, 2, 2, 1), Color(1, 0.301961, 0.235294, 1), Color(2, 2, 2, 1), Color(1, 0.301961, 0.235294, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wkcrx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2, 2, 2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gn6lx"]
+_data = {
+"LowFuel": SubResource("Animation_mjutw"),
+"RESET": SubResource("Animation_wkcrx")
+}
+
+[sub_resource type="Gradient" id="Gradient_lk3mk"]
+offsets = PackedFloat32Array(0, 0.62963)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0myti"]
+gradient = SubResource("Gradient_lk3mk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a54wv"]
+emission_shape = 1
+emission_sphere_radius = 40.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 2.5
+color = Color(1, 0.85098, 0.372549, 1)
+color_ramp = SubResource("GradientTexture1D_0myti")
+
+[sub_resource type="Gradient" id="Gradient_ucpxv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ld0t1"]
+gradient = SubResource("Gradient_ucpxv")
+width = 128
+height = 128
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.85)
+
+[node name="Entity1" type="CharacterBody2D" groups=["Receivers"]]
+collision_mask = 2
+script = ExtResource("1_2tdsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+position = Vector2(50, 0)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_une5d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(37.5, 0)
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-176, -172, -162, -170, -140, -178, -85, -179, -56, -172, -47, -172, -39, -154, -39, -136, -40, -126, -43, -111, -34, -106, -5, -133, 57, -118, 56, -136, 57, -164, 60, -168, 78, -167, 82, -170, 142, -172, 162, -166, 167, -166, 173, -150, 174, -136, 169, -115, 150, -113, 146, -103, 167, -100, 177, -91, 202, -89, 203, -119, 183, -162, 197, -160, 223, -119, 223, -93, 236, -91, 238, -61, 225, -60, 226, -35, 236, -29, 236, 28, 227, 31, 226, 59, 238, 59, 238, 90, 223, 91, 222, 119, 197, 159, 181, 159, 202, 116, 200, 91, 176, 90, 170, 99, 142, 101, 146, 112, 166, 111, 172, 132, 171, 146, 164, 164, 156, 164, 144, 168, 126, 170, 100, 170, 83, 169, 70, 163, 56, 163, 51, 140, 55, 119, -5, 132, -38, 103, -44, 110, -40, 118, -38, 135, -40, 154, -46, 171, -58, 172, -77, 178, -101, 179, -131, 177, -147, 175, -159, 172, -177, 172, -181, 147, -181, 132, -180, 115, -174, 108, -158, 108, -156, 76, -179, 82, -182, 47, -225, 51, -246, 35, -247, -32, -225, -52, -183, -49, -178, -83, -159, -80, -158, -109, -174, -108, -182, -120, -182, -138)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_5jyk3")
+
+[node name="UI" parent="." instance=ExtResource("4_5ht2a")]
+script = ExtResource("5_p64pi")
+
+[node name="FuelIndicatorBlink" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gn6lx")
+}
+
+[node name="SpeedBoostTimer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="BoostExhaust" type="GPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+texture_filter = 2
+position = Vector2(-50, 0)
+scale = Vector2(0.75, 0.75)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_a54wv")
+texture = ExtResource("7_ptm7p")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 1, 0.67451)
+energy = 0.5
+texture = SubResource("GradientTexture2D_ld0t1")
+texture_scale = 6.0
+
+[connection signal="timeout" from="SpeedBoostTimer" to="." method="_on_speed_boost_timer_timeout"]
