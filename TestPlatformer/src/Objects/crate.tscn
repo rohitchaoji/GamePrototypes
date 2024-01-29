@@ -1,29 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://di7inf4j86vqj"]
+[gd_scene load_steps=7 format=3 uid="uid://di7inf4j86vqj"]
 
 [ext_resource type="Script" path="res://src/Objects/crate.gd" id="1_dnb4r"]
 [ext_resource type="Texture2D" uid="uid://c3rf6t6mloo0v" path="res://src/crate.png" id="1_udqgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0erbu"]
-size = Vector2(34, 32)
+size = Vector2(34, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpfdj"]
-size = Vector2(38, 32)
+size = Vector2(38, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m3g6"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44kfj"]
+size = Vector2(32, 2)
 
 [node name="Crate" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 59
 script = ExtResource("1_dnb4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_udqgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_0erbu")
 
 [node name="PushArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea"]
+visible = false
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vpfdj")
+
+[node name="PushRayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)
+collision_mask = 26
+
+[node name="PushRayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-18, 0)
+collision_mask = 26
+
+[node name="StandRayCast1" type="RayCast2D" parent="."]
+target_position = Vector2(0, -30)
+
+[node name="StandRayCast2" type="RayCast2D" parent="."]
+position = Vector2(15, 0)
+target_position = Vector2(0, -30)
+
+[node name="StandRayCast3" type="RayCast2D" parent="."]
+position = Vector2(-15, 0)
+target_position = Vector2(0, -30)
+
+[node name="StandRayCast4" type="RayCast2D" parent="."]
+position = Vector2(7.5, 0)
+target_position = Vector2(0, -30)
+
+[node name="StandRayCast5" type="RayCast2D" parent="."]
+position = Vector2(-7.5, 0)
+target_position = Vector2(0, -30)
+
+[node name="BlockedBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 59
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockedBox"]
+shape = SubResource("RectangleShape2D_1m3g6")
+
+[node name="StandArea" type="StaticBody2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StandArea"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_44kfj")
 
 [connection signal="body_entered" from="PushArea" to="." method="_on_push_area_body_entered"]
 [connection signal="body_exited" from="PushArea" to="." method="_on_push_area_body_exited"]
+[connection signal="body_entered" from="BlockedBox" to="." method="_on_blocked_box_body_entered"]
+[connection signal="body_exited" from="BlockedBox" to="." method="_on_blocked_box_body_exited"]

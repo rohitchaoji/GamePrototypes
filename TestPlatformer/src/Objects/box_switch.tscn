@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceg8pc5nibfx3"]
+
+[ext_resource type="Script" path="res://src/Objects/box_switch.gd" id="1_am3u1"]
+[ext_resource type="Texture2D" uid="uid://yn8a86fl6uw6" path="res://src/Switch.png" id="1_bxa04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygclv"]
+size = Vector2(28.8, 7.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp6w0"]
+size = Vector2(28.8, 9.2)
+
+[node name="BoxSwitch" type="StaticBody2D" groups=["Switches"]]
+scale = Vector2(1.25, 1.25)
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_am3u1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bxa04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.62939e-07, 2.8)
+shape = SubResource("RectangleShape2D_ygclv")
+
+[node name="SwitchDetection" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchDetection"]
+position = Vector2(7.62939e-07, -5.4)
+shape = SubResource("RectangleShape2D_rp6w0")
+
+[connection signal="body_entered" from="SwitchDetection" to="." method="_on_switch_detection_body_entered"]

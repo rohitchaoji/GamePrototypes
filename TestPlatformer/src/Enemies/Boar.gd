@@ -7,6 +7,7 @@ var chase = false
 var attack_chase = false
 var can_damage = true
 var direction
+var blocked_by_box = false
 
 func _ready():
 	$AnimatedSprite2D.play("Idle")
@@ -14,7 +15,11 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
-		
+	
+	if blocked_by_box:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "position", position + (-sign(direction) * Vector2(10, 0)), 0.05)
+	
 	if chase:
 		if $AnimatedSprite2D.animation != "Hit":
 			if attack_chase:
@@ -84,3 +89,9 @@ func _on_damage_area_body_entered(body):
 			await get_tree().create_timer(0.75).timeout
 			can_damage = true
 		
+
+func box_block():
+	blocked_by_box = true
+
+func box_unblock():
+	blocked_by_box = false

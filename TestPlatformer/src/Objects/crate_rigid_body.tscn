@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://1ghfn86ypim6"]
+
+[ext_resource type="Texture2D" uid="uid://c3rf6t6mloo0v" path="res://src/crate.png" id="1_3kypn"]
+[ext_resource type="Script" path="res://src/Objects/crate_rigid_body.gd" id="1_pb2dx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8hht3"]
+friction = 0.2
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf0jt"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifg70"]
+size = Vector2(38, 32)
+
+[node name="Crate_RigidBody" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 27
+mass = 5000.0
+physics_material_override = SubResource("PhysicsMaterial_8hht3")
+angular_damp_mode = 1
+angular_damp = 100.0
+script = ExtResource("1_pb2dx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3kypn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qf0jt")
+
+[node name="SlowdownArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowdownArea"]
+shape = SubResource("RectangleShape2D_ifg70")
+
+[connection signal="body_entered" from="SlowdownArea" to="." method="_on_slowdown_area_body_entered"]
+[connection signal="body_exited" from="SlowdownArea" to="." method="_on_slowdown_area_body_exited"]

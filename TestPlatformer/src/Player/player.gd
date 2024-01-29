@@ -11,6 +11,7 @@ var attacking: bool = false
 var dead: bool = false
 var can_restart: bool = false
 var invulnerable: bool = false
+var blocked_by_box: bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 signal level_reset
@@ -73,7 +74,12 @@ func _physics_process(delta):
 			$WeaponHitbox/Hitbox.disabled = true
 			attacking = false
 			invulnerable = false
-	
+		
+		if blocked_by_box:
+			var tween = get_tree().create_tween()
+			tween.tween_property(self, "position", position + (-sign(direction) * Vector2(10, 0)), 0.05)
+
+
 	elif Health <= 0:
 		if !dead:
 			$AnimatedSprite2D.play("Death")
@@ -101,3 +107,9 @@ func damage_from_boar():
 	if (!dead and !invulnerable):
 		self.Health = self.Health - 1
 		$PlayerUI.update_health(MaxHealth, Health)
+
+func box_block():
+	blocked_by_box = true
+
+func box_unblock():
+	blocked_by_box = false
