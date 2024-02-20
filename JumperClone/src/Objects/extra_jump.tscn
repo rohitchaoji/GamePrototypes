@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://p0t5j5iwg53h"]
+
+[ext_resource type="Script" path="res://src/Objects/extra_jump.gd" id="1_sh75f"]
+[ext_resource type="Texture2D" uid="uid://12mq1a6g8wal" path="res://assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_ac2gg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srcm8"]
+size = Vector2(16, 16)
+
+[node name="ExtraJump" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_sh75f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ac2gg")
+hframes = 20
+vframes = 20
+frame = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_srcm8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
