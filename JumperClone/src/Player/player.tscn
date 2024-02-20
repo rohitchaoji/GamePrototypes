@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://cm2n4yfhh7upk"]
+
+[ext_resource type="Script" path="res://src/Player/player.gd" id="1_1kav6"]
+[ext_resource type="Texture2D" uid="uid://12mq1a6g8wal" path="res://assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="3_vgcf5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l33mj"]
+atlas = ExtResource("3_vgcf5")
+region = Rect2(96, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7fft"]
+atlas = ExtResource("3_vgcf5")
+region = Rect2(16, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxydm"]
+atlas = ExtResource("3_vgcf5")
+region = Rect2(32, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhx7k"]
+atlas = ExtResource("3_vgcf5")
+region = Rect2(48, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_str3f"]
+atlas = ExtResource("3_vgcf5")
+region = Rect2(64, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1xsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l33mj")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7fft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxydm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhx7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_str3f")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m5gp"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpsg0"]
+size = Vector2(4, 7)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+modulate = Color(0.75, 0.85, 1, 1)
+collision_mask = 490
+script = ExtResource("1_1kav6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n1xsg")
+animation = &"Dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_6m5gp")
+
+[node name="SlowdownArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowdownArea"]
+position = Vector2(6, 2.5)
+shape = SubResource("RectangleShape2D_dpsg0")
+
+[connection signal="body_entered" from="SlowdownArea" to="." method="_on_slowdown_area_body_entered"]
+[connection signal="body_exited" from="SlowdownArea" to="." method="_on_slowdown_area_body_exited"]
