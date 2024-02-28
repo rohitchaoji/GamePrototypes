@@ -13,6 +13,7 @@ func _ready():
 	else:
 		$AnimatableBody2D/Sprite2D.frame = 28
 
+
 func movement():
 	if single_use:
 		single_use_movement()

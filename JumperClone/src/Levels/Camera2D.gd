@@ -11,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var player_distace = position.y - player.position.y
 	if player_distace > 120:
 		var tween = get_tree().create_tween()

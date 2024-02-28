@@ -5,7 +5,7 @@ var player_falling_on_spikes: bool = false
 func _ready():
 	$CollisionArea/CollisionShape2D.disabled = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	player_falling()
 	if player_falling_on_spikes:
 		$CollisionArea/CollisionShape2D.disabled = false
@@ -31,6 +31,5 @@ func player_falling():
 
 
 func _on_collision_area_body_entered(body):
-	print("hit")
 	if body.is_in_group("Player"):
 		body.hazard_hit()

@@ -58,13 +58,13 @@ size = Vector2(10, 11)
 size = Vector2(4, 7)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-modulate = Color(0.75, 0.85, 1, 1)
-collision_mask = 490
+modulate = Color(0, 1, 0, 1)
+collision_mask = 1514
 script = ExtResource("1_1kav6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n1xsg")
-animation = &"Dead"
+animation = &"Move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)

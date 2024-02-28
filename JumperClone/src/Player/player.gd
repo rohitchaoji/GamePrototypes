@@ -16,13 +16,16 @@ var just_left_floor: bool = false
 var has_jumped_once: bool = false
 var walljumped_once: bool = false
 var dashing: bool = false
-var extra_jumps: int = 1
+var extra_jumps: int = 0
 var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = default_gravity
+var last_checkpoint: Vector2
 
 func _ready():
 	$AnimatedSprite2D.play("Move")
 	$AnimatedSprite2D.stop()
+	
+	last_checkpoint = position
 
 func _physics_process(delta):
 	
@@ -60,6 +63,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		can_coyote = true
 		walljumped_once = false
+		extra_jumps = 0
 
 		if Input.is_action_just_pressed("jump") or jump_buffered:
 			velocity.y = JUMP_VELOCITY
@@ -84,21 +88,33 @@ func _physics_process(delta):
 		$SlowdownArea/CollisionShape2D.position.x = -6
 		$AnimatedSprite2D.flip_h = true
 	
-	if extra_jumps >= 2 and not is_on_floor():
-		modulate = Color(1, 1, 0, 1)
+	if is_on_floor():
+		modulate = Color(0, 1, 0, 1)
 	
-	elif extra_jumps < 2 or is_on_floor():
-		modulate = Color(0.75, 0.85, 1, 1)
+	if extra_jumps >= 2:
+		modulate = Color(0, 1, 0, 1)
+	
+	if extra_jumps == 1:
+		modulate = Color(0.8, 1, 0.3, 1)
+	
+	if extra_jumps == 0 and not is_on_floor():
+		modulate = Color(1, 1, 1, 1)
 
 	move_and_slide()
 
 
 func hazard_hit():
-	$AnimatedSprite2D.play("Dead")
 	process_mode = Node.PROCESS_MODE_DISABLED
-	var timer = get_tree().create_timer(1.0)
-	await timer.timeout
-	get_parent().restart_level()
+	$AnimatedSprite2D.play("Dead")
+	
+	var timer_2 = get_tree().create_timer(1.0)
+	await timer_2.timeout
+	
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	$AnimatedSprite2D.play("Move")
+	$AnimatedSprite2D.stop()
+	
+	position = last_checkpoint
 
 
 func _on_slowdown_area_body_entered(body):
