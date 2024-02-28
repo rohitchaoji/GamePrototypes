@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5erycosgp3t5"]
+[gd_scene load_steps=17 format=3 uid="uid://c5erycosgp3t5"]
 
-[ext_resource type="Script" path="res://src/Levels/level_2.gd" id="1_xtlse"]
-[ext_resource type="PackedScene" uid="uid://d4imbddfakxu1" path="res://src/Levels/level_3.tscn" id="2_mrmfc"]
+[ext_resource type="Script" path="res://src/Levels/level_script.gd" id="1_5upi7"]
 [ext_resource type="PackedScene" uid="uid://cbgnvrwrs4qte" path="res://src/Tilemaps/level_tilemap.tscn" id="2_px8hf"]
 [ext_resource type="Script" path="res://src/Levels/Camera2D.gd" id="2_v38hp"]
 [ext_resource type="PackedScene" uid="uid://ch0w2wswgm7va" path="res://src/Objects/moving_platform.tscn" id="2_y5f3c"]
@@ -9,30 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://blib84rpv4w6b" path="res://src/Objects/spikes.tscn" id="6_spqfp"]
 [ext_resource type="PackedScene" uid="uid://do1s6a7weka6s" path="res://src/Objects/jump_trigger_platform.tscn" id="7_2o4g7"]
 [ext_resource type="PackedScene" uid="uid://dee02wee3ifw8" path="res://src/Objects/level_finish.tscn" id="8_dllte"]
-
-[sub_resource type="Curve2D" id="Curve2D_ngyv6"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_rhrm2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -148, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_e28f4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -216)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_0gu1k"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160)
-}
-point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ngxsn"]
 _data = {
@@ -58,9 +33,32 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_ngyv6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rhrm2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -148, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_e28f4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -216)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_0gu1k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160)
+}
+point_count = 2
+
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_xtlse")
-next_scene = ExtResource("2_mrmfc")
+script = ExtResource("1_5upi7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_top = -1728.0
@@ -81,29 +79,6 @@ position = Vector2(72, 264)
 
 [node name="level_finish" parent="." instance=ExtResource("8_dllte")]
 position = Vector2(72, -1656)
-
-[node name="JumpTriggerPlatforms" type="Node" parent="."]
-
-[node name="JumpTriggerPlatform" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
-position = Vector2(120, -824)
-curve = SubResource("Curve2D_ngyv6")
-speed_scale = 1.6
-
-[node name="JumpTriggerPlatform2" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
-position = Vector2(376, -840)
-curve = SubResource("Curve2D_rhrm2")
-speed_scale = 1.6
-
-[node name="JumpTriggerPlatform3" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
-position = Vector2(472, -888)
-curve = SubResource("Curve2D_e28f4")
-speed_scale = 2.0
-
-[node name="JumpTriggerPlatform4" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
-position = Vector2(184, -1592)
-curve = SubResource("Curve2D_0gu1k")
-speed_scale = 3.0
-single_use = true
 
 [node name="SpikeContainer" type="Node" parent="."]
 
@@ -177,3 +152,28 @@ looping = false
 position = Vector2(296, -696)
 curve = SubResource("Curve2D_xtixt")
 looping = false
+
+[node name="JumpTriggerPlatforms" type="Node" parent="."]
+
+[node name="JumpTriggerPlatform" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
+position = Vector2(120, -824)
+curve = SubResource("Curve2D_ngyv6")
+speed_scale = 1.6
+
+[node name="JumpTriggerPlatform2" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
+position = Vector2(376, -840)
+curve = SubResource("Curve2D_rhrm2")
+speed_scale = 1.6
+
+[node name="JumpTriggerPlatform3" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
+position = Vector2(472, -888)
+curve = SubResource("Curve2D_e28f4")
+speed_scale = 2.0
+
+[node name="JumpTriggerPlatform4" parent="JumpTriggerPlatforms" instance=ExtResource("7_2o4g7")]
+position = Vector2(184, -1592)
+curve = SubResource("Curve2D_0gu1k")
+speed_scale = 3.0
+single_use = true
+
+[node name="ExtraJumps" type="Node" parent="."]

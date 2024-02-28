@@ -11,7 +11,7 @@ func respawn_powerup(pos: Vector2):
 	await timer.timeout
 	var new_powerup = powerup_scene.instantiate()
 	new_powerup.position = pos
-	add_child(new_powerup)
+	$ExtraJumps.add_child(new_powerup)
 
 func next_level():
 	if next_scene != null:
