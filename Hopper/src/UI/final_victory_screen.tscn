@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://draho5jpul8ge"]
+
+[ext_resource type="Script" path="res://src/UI/final_victory_screen.gd" id="1_81r5u"]
+[ext_resource type="FontFile" uid="uid://dfw8viyfav8ps" path="res://src/UI/Kenney Future.ttf" id="1_ve0dr"]
+[ext_resource type="PackedScene" uid="uid://bs5646qcfk3f6" path="res://src/UI/credits_screen.tscn" id="2_c5lil"]
+
+[sub_resource type="FontVariation" id="FontVariation_5e8rf"]
+base_font = ExtResource("1_ve0dr")
+variation_embolden = 0.53
+
+[node name="FinalVictoryScreen" type="Node2D"]
+script = ExtResource("1_81r5u")
+credits_scene = ExtResource("2_c5lil")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -633.0
+offset_top = -44.0
+offset_right = 1287.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.66, 0.66)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = SubResource("FontVariation_5e8rf")
+theme_override_font_sizes/font_size = 72
+text = "CONGRATULATIONS! YOU HAVE WON"
+horizontal_alignment = 1

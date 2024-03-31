@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://blib84rpv4w6b"]
+
+[ext_resource type="Script" path="res://src/Objects/spikes.gd" id="1_a25ai"]
+[ext_resource type="Texture2D" uid="uid://12mq1a6g8wal" path="res://assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="2_k3m4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tswip"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iayis"]
+size = Vector2(16, 8)
+
+[node name="Spikes" type="StaticBody2D"]
+collision_layer = 64
+script = ExtResource("1_a25ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k3m4v")
+hframes = 20
+vframes = 20
+frame = 183
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_tswip")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_iayis")
+
+[node name="PlayerFall1" type="RayCast2D" parent="."]
+target_position = Vector2(0, -5)
+
+[node name="PlayerFall2" type="RayCast2D" parent="."]
+position = Vector2(4, 0)
+target_position = Vector2(0, -5)
+
+[node name="PlayerFall3" type="RayCast2D" parent="."]
+position = Vector2(-4, 0)
+target_position = Vector2(0, -5)
+
+[node name="PlayerFall4" type="RayCast2D" parent="."]
+position = Vector2(-7, 0)
+target_position = Vector2(0, -5)
+
+[node name="PlayerFall5" type="RayCast2D" parent="."]
+position = Vector2(7, 0)
+target_position = Vector2(0, -5)
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
