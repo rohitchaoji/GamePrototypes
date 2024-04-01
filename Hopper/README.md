@@ -10,3 +10,12 @@ First alpha build.
 ## Download
 
 The game is available to try in its current state. Just download the Hopper.zip file, extract and and run the executable. It is currently programmed to run on Windows systems and has been tested on Windows 11.
+
+## Project Notes
+
+This repository is missing the .godot directory. To edit this project, create a new Godot project and copy the files to your project directory. In the editor, reload the project and reimport any files as necessary.
+
+### Plugins
+
+This project is using Better Terrain by Portponky, but it is not included in this repository. Please go to the repository for Better Terrain and add it to you own project's addon folder.
+https://github.com/Portponky/better-terrain
