@@ -19,3 +19,7 @@ This repository is missing the .godot directory. To edit this project, create a 
 
 This project is using Better Terrain by Portponky, but it is not included in this repository. Please go to the repository for Better Terrain and add it to you own project's addon folder.
 https://github.com/Portponky/better-terrain
+
+### Asset Pack Credits
+This project uses 1-bit Platformer Pack by Kenney NL.
+https://www.kenney.nl/
