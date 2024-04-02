@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://hkbh0533cqoh"]
+
+[ext_resource type="Script" path="res://scripts/ui_layer.gd" id="1_l4rp5"]
+[ext_resource type="FontFile" uid="uid://cev6qad74lyk6" path="res://src/UI/PixelifySans-VariableFont_wght.ttf" id="2_yuov1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww2e4"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rd5l"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_okuaj"]
+base_font = ExtResource("2_yuov1")
+variation_embolden = 0.82
+spacing_glyph = 20
+
+[sub_resource type="FontVariation" id="FontVariation_hxpif"]
+base_font = ExtResource("2_yuov1")
+variation_embolden = 0.82
+spacing_glyph = 20
+
+[sub_resource type="FontVariation" id="FontVariation_s6ck6"]
+base_font = ExtResource("2_yuov1")
+variation_embolden = 0.82
+spacing_glyph = 20
+
+[node name="UILayer" type="CanvasLayer"]
+script = ExtResource("1_l4rp5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -16.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ww2e4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5rd5l")
+show_percentage = false
+
+[node name="LevelLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -36.0
+offset_right = 155.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = SubResource("FontVariation_okuaj")
+theme_override_font_sizes/font_size = 96
+text = "LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = SubResource("FontVariation_hxpif")
+theme_override_font_sizes/font_size = 96
+text = "VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeadLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -11.5
+offset_right = 57.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = SubResource("FontVariation_s6ck6")
+theme_override_font_sizes/font_size = 96
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1

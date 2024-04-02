@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://o1ctpeal1a4s"]
+
+[ext_resource type="Texture2D" uid="uid://12mq1a6g8wal" path="res://assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="1_1eefl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r45ls"]
+atlas = ExtResource("1_1eefl")
+region = Rect2(112, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb26l"]
+atlas = ExtResource("1_1eefl")
+region = Rect2(112, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7g348"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r45ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb26l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FanDecorationLarge" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7g348")
+autoplay = "default"

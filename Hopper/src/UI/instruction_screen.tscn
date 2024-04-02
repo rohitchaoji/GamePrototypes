@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl4ad0u4ibnxs"]
+
+[ext_resource type="Script" path="res://scripts/instruction_screen.gd" id="1_kfhpy"]
+[ext_resource type="PackedScene" uid="uid://cnlc25h7u3bt0" path="res://src/UI/menu_screen.tscn" id="2_es0ab"]
+[ext_resource type="FontFile" uid="uid://cev6qad74lyk6" path="res://src/UI/PixelifySans-VariableFont_wght.ttf" id="3_hvsd1"]
+
+[sub_resource type="FontVariation" id="FontVariation_83687"]
+base_font = ExtResource("3_hvsd1")
+
+[node name="InstructionScreen" type="Node2D"]
+script = ExtResource("1_kfhpy")
+menu_scene = ExtResource("2_es0ab")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="InstructionLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -258.5
+offset_right = 304.0
+offset_bottom = 258.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_83687")
+theme_override_font_sizes/font_size = 40
+text = "MOVE LEFT - LEFT ARROW / A / J
+MOVE RIGHT - RIGHT ARROW / D / L
+JUMP - SPACE / W / C
+
+PRESS JUMP AGAIN IN AIR
+TO DOUBLE JUMP
+
+JUMP AGAINST WALLS OR 
+OBTAIN JUMP CRYSTAL
+TO GAIN ONE EXTRA JUMP
+"
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 192.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("3_hvsd1")
+theme_override_font_sizes/font_size = 32
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]

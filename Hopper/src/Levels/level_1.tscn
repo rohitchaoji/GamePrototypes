@@ -1,0 +1,249 @@
+[gd_scene load_steps=14 format=3 uid="uid://bi2ym7mktbj1f"]
+
+[ext_resource type="Script" path="res://scripts/level_script.gd" id="1_7dpw0"]
+[ext_resource type="PackedScene" uid="uid://c5erycosgp3t5" path="res://src/Levels/level_2.tscn" id="2_hwdmo"]
+[ext_resource type="PackedScene" uid="uid://cbgnvrwrs4qte" path="res://src/Tilemaps/level_tilemap.tscn" id="2_lno83"]
+[ext_resource type="PackedScene" uid="uid://cm2n4yfhh7upk" path="res://src/Player/player.tscn" id="3_ajdto"]
+[ext_resource type="PackedScene" uid="uid://p0t5j5iwg53h" path="res://src/Objects/extra_jump.tscn" id="5_dy2v1"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="5_xyhx5"]
+[ext_resource type="PackedScene" uid="uid://dee02wee3ifw8" path="res://src/Objects/level_finish.tscn" id="6_vkrrl"]
+[ext_resource type="PackedScene" uid="uid://blib84rpv4w6b" path="res://src/Objects/spikes.tscn" id="7_1rrmf"]
+[ext_resource type="PackedScene" uid="uid://sd0yicqkgas" path="res://src/Objects/checkpoint.tscn" id="8_hj4ph"]
+[ext_resource type="PackedScene" uid="uid://hkbh0533cqoh" path="res://src/UI/ui_layer.tscn" id="9_2bpkp"]
+[ext_resource type="FontFile" uid="uid://cev6qad74lyk6" path="res://src/UI/PixelifySans-VariableFont_wght.ttf" id="11_4tdw6"]
+[ext_resource type="PackedScene" uid="uid://fq4gjlt6hu0c" path="res://src/Decorations/fan_decoration.tscn" id="11_rgtdt"]
+
+[sub_resource type="FontVariation" id="FontVariation_vlkin"]
+base_font = ExtResource("11_4tdw6")
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_7dpw0")
+next_scene = ExtResource("2_hwdmo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -864.0
+offset_right = 512.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="LevelTilemap" parent="." instance=ExtResource("2_lno83")]
+layer_0/tile_data = PackedInt32Array(1114112, 458753, 6, 1114143, 589825, 6, 65567, 589825, 5, 131103, 589825, 5, 196639, 589825, 5, 262175, 589825, 5, 327711, 589825, 5, 393247, 589825, 5, 458783, 589825, 5, 524319, 589825, 5, 589855, 589825, 5, 655391, 589825, 5, 720927, 589825, 5, 786463, 589825, 5, 851999, 589825, 5, 917535, 589825, 5, 983071, 589825, 5, 1048607, 589825, 5, 1114142, 524289, 6, 1114141, 524289, 6, 1114140, 524289, 6, 1114139, 524289, 6, 1114138, 524289, 6, 1114137, 524289, 6, 1114136, 524289, 6, 1114135, 524289, 6, 1114134, 524289, 6, 1114133, 524289, 6, 1114132, 524289, 6, 1114131, 524289, 6, 1114130, 524289, 6, 1114129, 524289, 6, 1114128, 524289, 6, 1114127, 524289, 6, 1114126, 524289, 6, 1114125, 524289, 6, 1114124, 524289, 6, 1114123, 524289, 6, 1114122, 524289, 6, 1114121, 524289, 6, 1114120, 524289, 6, 1114119, 524289, 6, 1114118, 524289, 6, 1114117, 524289, 6, 1114116, 524289, 6, 1114115, 524289, 6, 1114114, 524289, 6, 1114113, 524289, 6, 1048576, 458753, 5, 983040, 458753, 5, 917504, 458753, 5, 851968, 458753, 5, 786432, 458753, 5, 720896, 458753, 5, 655360, 458753, 5, 589824, 458753, 5, 524288, 458753, 5, 458752, 458753, 5, 393216, 458753, 5, 327680, 458753, 5, 262144, 458753, 5, 196608, 458753, 5, 131072, 458753, 5, 65536, 458753, 5, 0, 458753, 5, 31, 589825, 5, 851978, 262145, 5, 851979, 327681, 5, 851980, 393217, 5, -65536, 458753, 5, -131072, 458753, 5, -196608, 458753, 5, -262144, 458753, 5, -327680, 458753, 5, -393216, 458753, 5, -458752, 458753, 5, -524288, 458753, 5, -589824, 458753, 5, -655360, 458753, 5, -720896, 458753, 5, -786432, 458753, 5, -851968, 458753, 5, -917504, 458753, 5, -983040, 458753, 5, -1048576, 458753, 5, -1114112, 458753, 5, -1179648, 458753, 5, -65505, 589825, 5, -131041, 589825, 5, -196577, 589825, 5, -262113, 589825, 5, -327649, 589825, 5, -393185, 589825, 5, -458721, 589825, 5, -524257, 589825, 5, -589793, 589825, 5, -655329, 589825, 5, -720865, 589825, 5, -786401, 589825, 5, -851937, 589825, 5, -917473, 589825, 5, -983009, 589825, 5, -1048545, 589825, 5, -1114081, 589825, 5, -1179617, 589825, 5, -1245184, 458753, 5, -1310720, 458753, 5, -1376256, 458753, 5, -1441792, 458753, 5, -1507328, 458753, 5, -1572864, 458753, 5, -1638400, 458753, 5, -1703936, 458753, 5, -1769472, 458753, 5, -1835008, 458753, 5, -1900544, 458753, 5, -1966080, 458753, 5, -2031616, 458753, 5, -2097152, 458753, 5, -2162688, 458753, 5, -2228224, 458753, 5, -2293760, 458753, 5, -2359296, 458753, 5, -2424832, 458753, 5, -2490368, 458753, 5, -2555904, 458753, 5, -2621440, 458753, 5, -2686976, 458753, 5, -2752512, 458753, 5, -2818048, 458753, 5, -2883584, 458753, 5, -2949120, 458753, 5, -3014656, 458753, 5, -3080192, 458753, 5, -3145728, 458753, 5, -3211264, 458753, 5, -3276800, 458753, 5, -3342336, 458753, 5, -3407872, 458753, 5, -3473408, 458753, 5, -1245153, 589825, 5, -1310689, 589825, 5, -1376225, 589825, 5, -1441761, 589825, 5, -1507297, 589825, 5, -1572833, 589825, 5, -1638369, 589825, 5, -1703905, 589825, 5, -1769441, 589825, 5, -1834977, 589825, 5, -1900513, 589825, 5, -1966049, 589825, 5, -2031585, 589825, 5, -2097121, 589825, 5, -2162657, 589825, 5, -2228193, 589825, 5, -2293729, 589825, 5, -2359265, 589825, 5, -2424801, 589825, 5, -2490337, 589825, 5, -2555873, 589825, 5, -2621409, 589825, 5, -2686945, 589825, 5, -2752481, 589825, 5, -2818017, 589825, 5, -2883553, 589825, 5, -2949089, 589825, 5, -3014625, 589825, 5, -3080161, 589825, 5, -3145697, 589825, 5, -3211233, 589825, 5, -3276769, 589825, 5, -3342305, 589825, 5, -3407841, 589825, 5, -3473377, 589825, 5, -3538944, 458753, 4, -3538913, 589825, 4, -3538914, 524289, 4, -3538915, 524289, 4, -3538916, 524289, 4, -3538917, 524289, 4, -3538918, 524289, 4, -3538919, 524289, 4, -3538920, 524289, 4, -3538921, 524289, 4, -3538922, 524289, 4, -3538923, 524289, 4, -3538924, 524289, 4, -3538925, 524289, 4, -3538926, 524289, 4, -3538927, 524289, 4, -3538928, 524289, 4, -3538929, 524289, 4, -3538930, 524289, 4, -3538931, 524289, 4, -3538932, 524289, 4, -3538933, 524289, 4, -3538934, 524289, 4, -3538935, 524289, 4, -3538936, 524289, 4, -3538937, 524289, 4, -3538938, 524289, 4, -3538939, 524289, 4, -3538940, 524289, 4, -3538941, 524289, 4, -3538942, 524289, 4, -3538943, 524289, 4, 1048592, 458753, 12, 983056, 458753, 12, 917520, 458753, 12, 851984, 589825, 12, 786448, 458753, 12, 720912, 458753, 12, 655376, 458753, 12, 589840, 458753, 12, 524304, 458753, 11, 524305, 524289, 11, 524306, 524289, 11, 524307, 524289, 11, 524308, 589825, 11, 589844, 458753, 12, 196631, 1179649, 9, 262167, 1179649, 14, 327703, 1179649, 15, -131050, 262145, 3, -131049, 327681, 3, -131048, 393217, 3, 655380, 458753, 13, 655381, 524289, 11, 655382, 589825, 11, 720918, 458753, 12, 786454, 458753, 12, 851990, 458753, 12, 917526, 458753, 12, 983062, 458753, 12, 1048598, 458753, 12, 65556, 1179649, 13, 131092, 1179649, 14, 196628, 1179649, 15, -262126, 1114113, 16, -262140, 983041, 16, -262139, 1048577, 12, -262138, 1048577, 16, -262137, 1048577, 12, -262136, 1048577, 16, -262135, 1048577, 16, -262134, 1048577, 12, -262133, 1048577, 16, -262132, 1048577, 16, -262131, 1048577, 12, -262130, 1048577, 12, -262129, 1048577, 16, -262128, 1048577, 12, -262127, 1048577, 16, -458746, 262145, 3, -458745, 327681, 3, -458744, 393217, 3, 17, 1048577, 16, 18, 1048577, 12, 19, 1114113, 12, 20, 1179649, 12, 16, 1048577, 12, 15, 1048577, 12, 14, 1048577, 16, 13, 1048577, 16, 12, 1048577, 12, 11, 1048577, 16, 10, 1048577, 12, 9, 983041, 12, 8, 1179649, 12, -196600, 1179649, 13, -131064, 1179649, 14, -65528, 1179649, 15, -983026, 262145, 3, -983025, 327681, 3, -983024, 393217, 3, -983010, 458753, 4, -917474, 524289, 5, -1769448, 589825, 11, -1703912, 589825, 13, -1769449, 524289, 11, -1769450, 524289, 11, -1769451, 524289, 11, -1769452, 524289, 11, -1769453, 524289, 11, -1769454, 524289, 11, -1769455, 524289, 11, -1769456, 524289, 11, -1769457, 524289, 11, -1769458, 524289, 11, -1769459, 524289, 11, -1769460, 458753, 13, -1703913, 524289, 11, -1703914, 524289, 11, -1703915, 524289, 11, -1703916, 524289, 11, -1703917, 524289, 11, -1703918, 524289, 11, -1703919, 524289, 11, -1703920, 524289, 11, -1703921, 524289, 11, -1703922, 524289, 11, -1703923, 458753, 11, -1638387, 458753, 12, -1572851, 458753, 12, -1507315, 458753, 12, -1441779, 589825, 13, -1441780, 458753, 13, -1572852, 458753, 12, -1638388, 589825, 12, -1703924, 589825, 11, -1703925, 458753, 13, -1769461, 458753, 12, -1834997, 458753, 12, -1900533, 458753, 12, -1966069, 458753, 11, -1966068, 524289, 11, -1966067, 589825, 11, -1900531, 589825, 13, -1835007, 983041, 13, -1769471, 983041, 14, -1835006, 1048577, 13, -1835005, 1048577, 13, -1835004, 1048577, 13, -1835003, 1048577, 13, -1835002, 1048577, 13, -1835001, 1048577, 13, -1835000, 1048577, 13, -1834999, 1048577, 13, -1834998, 1114113, 13, -1769462, 1114113, 14, -1703926, 1114113, 14, -1703935, 983041, 14, -1638399, 983041, 10, -1638390, 1114113, 10, -1572854, 1114113, 15, -1572855, 1048577, 15, -1572856, 1048577, 15, -1572857, 1048577, 15, -1572858, 1048577, 15, -1572859, 1048577, 15, -1572860, 1048577, 15, -1572861, 1048577, 15, -1572862, 1048577, 15, -1572863, 983041, 15, -1703932, 1048577, 14, -1638392, 1048577, 14, -1769464, 1048577, 10, -1638398, 1048577, 10, -1769466, 1048577, 10, -2752496, 327681, 0, -2949105, 720897, 17, -2883569, 720897, 18, -2818033, 720897, 19, -2949104, 786433, 17, -2883568, 786433, 18, -2818032, 786433, 19, -2949103, 851969, 17, -2883567, 851969, 18, -2818031, 851969, 19, -2686961, 262145, 1, -2621425, 262145, 2, -2686960, 327681, 1, -2621424, 327681, 2, -2686959, 393217, 1, -2621423, 393217, 2, -2490356, 196609, 4, -2359292, 262145, 3, -2359291, 327681, 3, -2359290, 393217, 3, 1048581, 1179649, 0, 1048580, 1179649, 0, 1048582, 1179649, 1, 1048583, 1179649, 0, 1048584, 1179649, 1, 1048585, 1179649, 1, 1048603, 1179649, 0, 1048602, 1048577, 0, 1048605, 1048577, 0, 1048604, 1179649, 1, 1048601, 1179649, 1, 1048600, 1179649, 1, 1048606, 1179649, 0, -1179621, 1179649, 15, -1245157, 1179649, 14, -1310693, 1179649, 14, -1376229, 1179649, 14, -1441765, 1179649, 14, -1507301, 1179649, 14, -1572837, 1179649, 13, -1638373, 1114113, 0, -1048551, 983041, 10, -1048550, 1114113, 10, -983014, 1114113, 11, -983015, 983041, 11, -1114087, 983041, 9, -1114086, 1114113, 9, -851938, 524289, 5, -917475, 458753, 4, -851939, 458753, 5, -786403, 458753, 6, -786402, 524289, 6, 23, 983041, 9, 65559, 983041, 14, 131095, 983041, 11, 24, 1048577, 13, 30, 1114113, 13, 25, 1048577, 9, 26, 1048577, 9, 29, 1048577, 13, 65566, 1114113, 14, 131096, 1048577, 11, 131097, 1048577, 15, 131098, 1048577, 15, 131099, 1048577, 11, 131100, 1048577, 15, 131101, 1048577, 15, 131102, 1114113, 11, 27, 1048577, 9, 28, 1048577, 13)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_ajdto")]
+position = Vector2(48, 264)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, 144)
+zoom = Vector2(2.5, 2.5)
+script = ExtResource("5_xyhx5")
+
+[node name="level_finish" parent="." instance=ExtResource("6_vkrrl")]
+position = Vector2(264, -728)
+
+[node name="Checkpoint" parent="." instance=ExtResource("8_hj4ph")]
+position = Vector2(344, -480)
+scale = Vector2(1, 5)
+
+[node name="InstructionLabels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="InstructionLabels"]
+offset_left = 32.0
+offset_top = 184.0
+offset_right = 496.0
+offset_bottom = 301.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "MOVE LEFT - A / J / LEFT ARROW
+MOVE RIGHT - D / L / RIGHT ARROW
+JUMP - SPACE / C / W"
+
+[node name="Label5" type="Label" parent="InstructionLabels"]
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 604.0
+offset_bottom = 197.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "PLAYER COLOUR INDICATES THE
+NUMBER OF JUMPS AVAILABLE.
+WHITE INDICATES NO JUMPS."
+
+[node name="Label2" type="Label" parent="InstructionLabels"]
+offset_left = 392.0
+offset_top = 56.0
+offset_right = 794.0
+offset_bottom = 173.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "JUMP AGAINST WALLS TO GET 
+AN EXTRA JUMP"
+
+[node name="Label3" type="Label" parent="InstructionLabels"]
+offset_left = 392.0
+offset_top = 56.0
+offset_right = 794.0
+offset_bottom = 173.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "JUMP AGAINST WALLS TO GET 
+AN EXTRA JUMP"
+
+[node name="Label4" type="Label" parent="InstructionLabels"]
+offset_left = 192.0
+offset_top = -44.0
+offset_right = 594.0
+offset_bottom = 113.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "AVOID SPIKES. HITTING ONE
+WILL RESTART THE LBVEL OR
+SPAWN YOU AT THE LAST
+CHECKPOINT"
+
+[node name="Label6" type="Label" parent="InstructionLabels"]
+offset_left = 72.0
+offset_top = -216.0
+offset_right = 474.0
+offset_bottom = -59.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "THESE POWERUP CRYSTALS
+GRANT YOU AN EXTRA JUMP
+MID-AIR"
+
+[node name="Label7" type="Label" parent="InstructionLabels"]
+offset_left = 312.0
+offset_top = -696.0
+offset_right = 718.0
+offset_bottom = -539.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_vlkin")
+theme_override_font_sizes/font_size = 30
+text = "EVERY LEVEL ENDS WHEN YOU
+TOUCH A TREASURE CHEST
+WHICH CAN BE FOUND NEAR
+TOP OF THE LEVEL"
+
+[node name="SpikeContainer" type="Node" parent="."]
+
+[node name="Spikes" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(296, -72)
+
+[node name="Spikes2" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(280, -72)
+
+[node name="Spikes5" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(160, -72)
+
+[node name="Spikes6" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(144, -72)
+
+[node name="Spikes7" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(128, -72)
+
+[node name="Spikes8" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(112, -72)
+
+[node name="Spikes9" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(96, -72)
+
+[node name="Spikes10" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(80, -72)
+
+[node name="Spikes11" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(152, -40)
+rotation = 1.5708
+
+[node name="Spikes12" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(152, -24)
+rotation = 1.5708
+
+[node name="Spikes13" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(152, -8)
+rotation = 1.5708
+
+[node name="Spikes14" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(488, -312)
+rotation = -1.5708
+
+[node name="Spikes15" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(488, -296)
+rotation = -1.5708
+
+[node name="Spikes22" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(56, -456)
+
+[node name="Spikes23" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(40, -456)
+
+[node name="Spikes24" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -456)
+
+[node name="Spikes25" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -544)
+rotation = 1.5708
+
+[node name="Spikes26" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -528)
+rotation = 1.5708
+
+[node name="Spikes27" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -560)
+rotation = 1.5708
+
+[node name="Spikes28" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -576)
+rotation = 1.5708
+
+[node name="Spikes29" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -592)
+rotation = 1.5708
+
+[node name="Spikes30" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(24, -608)
+rotation = 1.5708
+
+[node name="Spikes3" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(424, -280)
+
+[node name="Spikes4" parent="SpikeContainer" instance=ExtResource("7_1rrmf")]
+position = Vector2(408, -280)
+
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="JumpTriggerPlatforms" type="Node" parent="."]
+
+[node name="ExtraJumps" type="Node" parent="."]
+
+[node name="ExtraJump" parent="ExtraJumps" instance=ExtResource("5_dy2v1")]
+position = Vector2(184, -184)
+
+[node name="ExtraJump2" parent="ExtraJumps" instance=ExtResource("5_dy2v1")]
+position = Vector2(392, -177)
+
+[node name="ExtraJump3" parent="ExtraJumps" instance=ExtResource("5_dy2v1")]
+position = Vector2(45, -528)
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="FanDecoration" parent="Decorations" instance=ExtResource("11_rgtdt")]
+position = Vector2(392, 24)
+
+[node name="FanDecoration2" parent="Decorations" instance=ExtResource("11_rgtdt")]
+position = Vector2(472, 24)
+
+[node name="FanDecoration3" parent="Decorations" instance=ExtResource("11_rgtdt")]
+position = Vector2(432, 24)
+frame = 1
+frame_progress = 0.797778
+
+[node name="UILayer" parent="." instance=ExtResource("9_2bpkp")]
+label_text = "LEVEL 1"
