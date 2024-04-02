@@ -1,6 +1,6 @@
 # Hopper
 
-Version 0.1a
+Version 0.101a
 
 Hopper is a 2D platformer game that follows the adventure of Hopper, who is trying to find its way out of a series of vertical levels.
 
